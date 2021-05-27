@@ -16,10 +16,15 @@ const App = () => {
   const handleDisagree=()=>{
     setDisagree(disagree+1)
   }    
-
-  const all=agree+neutral+disagree
-  const avg=(agree-disagree)/all
-  const positive=(agree/all)*100
+  let all=0
+  let avg=0
+  let positive=0
+  if(agree+neutral+disagree>0)
+  {all=agree+neutral+disagree}
+  if(((agree-disagree)/all)>0)
+  {avg=(agree-disagree)/all}
+  if(((agree/all)*100)>0)
+  {positive=(agree/all)*100}
   return (
     <div>
       <h1>give feedback</h1>
