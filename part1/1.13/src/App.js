@@ -1,5 +1,29 @@
 import React, { useState } from 'react'
 
+const Button=(props)=>{
+
+  return(
+    <div>
+    <button onClick={props.handleVotes}>Vote</button>&nbsp;
+    <button onClick={props.random} >Next Anecdote</button>
+    </div>
+  )
+
+}
+const Display=({text,votes=0,random,handleVotes})=>{
+  return (
+    <div>    
+      <div>
+        {text}
+      </div>
+      <div>
+        has {votes} votes
+      </div>
+      <Button handleVotes={handleVotes} random={random}/>
+    </div>    
+  )
+}
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often',
@@ -13,18 +37,22 @@ const App = () => {
   const [selected, setSelected] = useState(0)
   const [votes,setVotes]=useState(0)
   const random=()=>{
-    setSelected(Math.floor(Math.random()*anecdotes.length))
-  }
+    setSelected(Math.floor(Math.random() * anecdotes.length))
+
+    }
   const handleVotes=()=>{
-    setVotes(votes+1)
+    const selectedVoteCount = votes[selected] || 0
+    setVotes({ 
+      ...votes,[selected]: selectedVoteCount + 1 
+    })
+
+
   }
 
   return (
     <div>
-      {anecdotes[selected]} <br/>
-      has {votes} votes<br/>
-      <button onClick={handleVotes}>Vote</button>&nbsp;
-      <button onClick={random}>Next Anecdote</button>
+   <Display   text={anecdotes[selected]} votes={votes[selected]} handleVotes={handleVotes} random={random}/>
+
     </div>
   )
 }
