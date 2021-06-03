@@ -21,11 +21,6 @@ app.use(express.json())
         "content": "Mary Poppendieck",
         "number": "39-23-6423122",
         "id": 4
-      },
-      {
-        "content": "Tolaginchu Nannu",
-        "number": "9999999999",
-        "id": 5
       }
     ]
 
