@@ -6,7 +6,7 @@
     "node": "12.18.3"
   },
   "scripts": {
-    "start": "node index.js GirlOnFire",
+    "start": "node index.js ",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "cd build && npm install --only=dev && npm install",
